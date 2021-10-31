@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Part from './Part';
 
-const Content = ({part, exercises}) => {
+const Content = ({data}) => {
 
   return (
     <>
-      <p>
-        {part} {exercises}
-      </p>
+      <Part part={data[0].part} exercises={data[0].exercises} />
+      <Part part={data[1].part} exercises={data[1].exercises} />
+      <Part part={data[2].part} exercises={data[2].exercises} />
     </>
   )
 }
