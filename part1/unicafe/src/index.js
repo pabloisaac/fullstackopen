@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const Statistics = ({good, neutral, bad}) => {
+const Statistics = ({ good, neutral, bad }) => {
 
   const getTotal = () => { return good + neutral + bad }
 
@@ -39,12 +39,15 @@ const App = () => {
 
   return (
     <>
-    <div>
-      <button onClick={() => { increaseByOne('good') }}>Good</button>
-      <button onClick={() => { increaseByOne('neutral') }}>Neutral</button>
-      <button onClick={() => { increaseByOne('bad') }}>Bad</button>
-    </div>
-    <Statistics good={good} neutral={neutral} bad={bad}/>
+      <div>
+        <button onClick={() => { increaseByOne('good') }}>Good</button>
+        <button onClick={() => { increaseByOne('neutral') }}>Neutral</button>
+        <button onClick={() => { increaseByOne('bad') }}>Bad</button>
+      </div>
+      {good === 0 && neutral === 0 && bad === 0 ?
+        <p>No feedback given</p> :
+        <Statistics good={good} neutral={neutral} bad={bad} />
+      }
     </>
   )
 }
