@@ -15,17 +15,29 @@ const Statistics = ({ good, neutral, bad }) => {
 
   return (
     <>
-      <div>
-        <Statistic title={'Good'} value={good} />
-        <Statistic title={'Neutral'} value={neutral} />
-        <Statistic title={'Bad'} value={bad} />
-      </div>
-      <hr></hr>
-      <div>
-        <Statistic title={'All'} value={getTotal()} />
-        <Statistic title={'Average'} value={(good - bad) / getTotal()} />
-        <Statistic title={'Positive'} value={good / getTotal() * 100} />
-      </div>
+      <h1>Statistics</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td><Statistic title={'Good'} value={good} /></td>
+          </tr>
+          <tr>
+            <td><Statistic title={'Neutral'} value={neutral} /></td>
+          </tr>
+          <tr>
+            <td><Statistic title={'Bad'} value={bad} /></td>
+          </tr>
+          <tr>
+            <td><Statistic title={'All'} value={getTotal()} /></td>
+          </tr>
+          <tr>
+            <td><Statistic title={'Average'} value={(good - bad) / getTotal()} /></td>
+          </tr>
+          <tr>
+            <td><Statistic title={'Positive'} value={good / getTotal() * 100} /></td>
+          </tr>
+        </tbody>
+      </table>
     </>
   )
 }
@@ -39,6 +51,7 @@ const App = () => {
   return (
     <>
       <div>
+        <h1>Give Feedback</h1>
         <Button operation={() => setGood(good + 1)} text='Good' />
         <Button operation={() => setNeutral(neutral + 1)} text='Neutral' />
         <Button operation={() => setBad(bad + 1)} text='Bad' />
