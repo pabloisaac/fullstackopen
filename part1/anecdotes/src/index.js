@@ -9,14 +9,21 @@ const App = (props) => {
     return (Math.floor(props.anecdotes.length * Math.random()));
   }
 
-  const handleVote = () =>{
-    for(let i = 0 ; i < points.length ; i++){
-      if(i === selected){
-        let newPoint = [...points]
-        newPoint[i] = newPoint[i] + 1
-        setPoints(newPoint)
-      }
-    }
+  const handleVote = () => {
+    let newArr = [...points]
+    newArr[selected] = newArr[selected] + 1
+    setPoints(newArr)
+  }
+
+  const getMostVotesAnecdote = () => {
+    let sortArr = [...points]
+    let index = sortArr.sort((a,b) => {
+      return b-a
+    })[0]
+    return [
+      <p>{props.anecdotes[points.indexOf(index)]}</p>,
+      <p>Has {index} votes</p>
+    ]
   }
 
   return (
@@ -26,6 +33,11 @@ const App = (props) => {
       <div>
         <button onClick={() => handleVote()}>Vote</button>
         <button onClick={() => setSelected(getRandomIndex())}>Next anecdote</button>
+      </div>
+      <hr></hr>
+      <div>
+        <h1>Anecdote with most votes</h1>
+        {getMostVotesAnecdote()}
       </div>
     </>
   )
